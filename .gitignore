@@ -83,8 +83,5 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# dist directory
-dist/
-
 # vs code directory
 .vscode
