@@ -1,0 +1,26 @@
+{
+  "name": "markdown-hash-filter",
+  "version": "1.0.0",
+  "description": "Filter markdown by header.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tukumo/markdown-hash-filter.git"
+  },
+  "keywords": [
+    "markdown",
+    "hash",
+    "title",
+    "header",
+    "filter"
+  ],
+  "author": "tukumo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tukumo/markdown-hash-filter/issues"
+  },
+  "homepage": "https://github.com/tukumo/markdown-hash-filter#readme"
+}
