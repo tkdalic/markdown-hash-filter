@@ -26,5 +26,11 @@
     "bin",
     "build"
   ],
-  "homepage": "https://github.com/tukumo/markdown-hash-filter#readme"
+  "homepage": "https://github.com/tukumo/markdown-hash-filter#readme",
+  "dependencies": {
+    "commander": "^2.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.12.2"
+  }
 }
