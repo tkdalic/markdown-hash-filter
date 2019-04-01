@@ -1,8 +1,8 @@
-import markdownParser from "../lib/markdown-filter";
 import commander from "commander";
 import { writeFileSync } from "fs";
-import getFilenameAndContent from "../lib/get-filename-and-content";
 import mkdirp = require("mkdirp");
+import { getFilenameAndContent } from "../lib/get-filename-and-content";
+import { markdownHashFilter } from "../lib/markdown-hash-filter";
 
 // コマンドライン引数の制御
 commander
@@ -21,7 +21,7 @@ const files = getFilenameAndContent(commander.args[0]);
 const filteredMarkdown = files.map((file): { title: string, content: string } =>
   ({
     title: file.title,
-    content: markdownParser(file.content, commander.tag)
+    content: markdownHashFilter(file.content, commander.tag)
   }))
   .filter(file => file.content !== '')
   .map(file => `${file.title}\n${file.content}`)

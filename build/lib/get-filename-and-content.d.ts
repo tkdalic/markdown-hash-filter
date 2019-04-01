@@ -4,7 +4,7 @@
  * @param {string} path
  * @returns {{ title: string, content: string }[]}
  */
-export default function (path: string): {
+export declare function getFilenameAndContent(path: string): {
     title: string;
     content: string;
 }[];

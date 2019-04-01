@@ -6,7 +6,7 @@ import { statSync, readdirSync, readFileSync } from "fs";
  * @param {string} path
  * @returns {{ title: string, content: string }[]}
  */
-export default function getFilenameAndContent(path: string): { title: string, content: string }[] {
+export function getFilenameAndContent(path: string): { title: string, content: string }[] {
   const stat = statSync(path);
 
   if (stat.isFile() && path.substr(-3) === ".md") {

@@ -3,14 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var markdown_filter_1 = __importDefault(require("../lib/markdown-filter"));
 var commander_1 = __importDefault(require("commander"));
 var fs_1 = require("fs");
-var get_filename_and_content_1 = __importDefault(require("../lib/get-filename-and-content"));
 var mkdirp = require("mkdirp");
+var get_filename_and_content_1 = require("../lib/get-filename-and-content");
+var markdown_hash_filter_1 = require("../lib/markdown-hash-filter");
 // コマンドライン引数の制御
 commander_1.default
-    .version("1.0.0")
+    .version("0.0.1")
     .usage("<file> [options]")
     .option('<file>', "input file")
     .option('-t, --tag <tag>', "filter tag")
@@ -18,12 +18,12 @@ commander_1.default
     .option("-d, --output-dir <outputDir>", "output directory")
     .parse(process.argv);
 // 対象ファイルの取得
-var files = get_filename_and_content_1.default(commander_1.default.args[0]);
+var files = get_filename_and_content_1.getFilenameAndContent(commander_1.default.args[0]);
 // 抽出したマークダウンを取得
 var filteredMarkdown = files.map(function (file) {
     return ({
         title: file.title,
-        content: markdown_filter_1.default(file.content, commander_1.default.tag)
+        content: markdown_hash_filter_1.markdownHashFilter(file.content, commander_1.default.tag)
     });
 })
     .filter(function (file) { return file.content !== ''; })

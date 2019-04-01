@@ -8,7 +8,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @param {string} selectHeader
  * @returns
  */
-function default_1(markDown, selectHeader) {
+function markdownHashFilter(markDown, selectHeader) {
     var filteredMarkdown = "";
     var isExtractionTarget = false;
     var currentTagDepth = 1;
@@ -36,7 +36,7 @@ function default_1(markDown, selectHeader) {
     });
     return filteredMarkdown;
 }
-exports.default = default_1;
+exports.markdownHashFilter = markdownHashFilter;
 /**
  * タグの深さを測定し返す
  * タグではないときは-1を返却
@@ -56,4 +56,4 @@ function headerTagDepth(tags) {
     }
     return -1;
 }
-//# sourceMappingURL=markdown-filter.js.map
+//# sourceMappingURL=markdown-hash-filter.js.map

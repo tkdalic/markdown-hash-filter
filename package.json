@@ -2,7 +2,7 @@
   "name": "markdown-hash-filter",
   "version": "0.0.1",
   "description": "Filter markdown by header.",
-  "main": "build/lib/markdown-filter.js",
+  "main": "build/lib/markdown-hash-filter.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

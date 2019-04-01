@@ -6,4 +6,4 @@
  * @param {string} selectHeader
  * @returns
  */
-export default function (markDown: string, selectHeader: string): string;
+export declare function markdownHashFilter(markDown: string, selectHeader: string): string;
