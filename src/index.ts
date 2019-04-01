@@ -1,55 +1,39 @@
-import markdownParser from "./lib/markdownFilter";
+import markdownParser from "../lib/markdown-filter";
 import commander from "commander";
-import { existsSync, statSync, readdirSync } from "fs";
+import { writeFileSync } from "fs";
+import getFilenameAndContent from "../lib/get-filename-and-content";
+import mkdirp = require("mkdirp");
 
+// コマンドライン引数の制御
 commander
   .version("1.0.0")
-  .usage("[options] <files ...>")
-  .option("-o, --output <file>", "output files")
+  .usage("<file> [options]")
+  .option('<file>', "input file")
+  .option('-t, --tag <tag>', "filter tag")
+  .option("-o, --output-file <outputFile>", "output file")
+  .option("-d, --output-dir <outputDir>", "output directory")
   .parse(process.argv);
 
-const files: string[] = [];
-commander.args.forEach(arg => {
-  files.push(...getFileNameList(arg));
-});
+// 対象ファイルの取得
+const files = getFilenameAndContent(commander.args[0]);
 
-console.log(files);
+// 抽出したマークダウンを取得
+const filteredMarkdown = files.map((file): { title: string, content: string } =>
+  ({
+    title: file.title,
+    content: markdownParser(file.content, commander.tag)
+  }))
+  .filter(file => file.content !== '')
+  .map(file => `${file.title}\n${file.content}`)
+  .join('\n');
 
-function getFileNameList(path: string): string[] {
-  const stat = statSync(path);
-
-  if (stat.isFile() && path.substr(-3) === ".md") {
-    return [path];
-  }
-
-  if (stat.isDirectory()) {
-    const fileNames: string[] = [];
-    readdirSync(path).forEach((childPath: string) =>
-      fileNames.push(...getFileNameList(`${path}/${childPath}`))
-    );
-    return fileNames;
-  }
-  return [];
+// ファイルのパスとフォルダの作成
+let outputDir: string = commander.outputDir ? commander.outputDir : '';
+if (outputDir.substr(-1) === '/') {
+  outputDir = outputDir.substr(-1);
 }
 
-// const content =
-//   "\n" +
-//   "# テスト\n" +
-//   "\n" +
-//   "テストです。\n" +
-//   "テストなのです。\n" +
-//   "## 小テスト\n" +
-//   "小テストです。\n" +
-//   "## 小テスト2\n" +
-//   "小テスト2です。\n" +
-//   "# テスト2\n" +
-//   "テスト2です。\n" +
-//   "テスト2なのです。\n";
+const outputFile = commander.outputFile ? commander.outputFile : `${outputDir}/${commander.tag}.md`;
+mkdirp.sync(outputFile.split('/').slice(0, -1).join('/'));
 
-// const testTags = ["テスト", "テストです。", "小テスト", "テスト2"];
-// testTags.forEach(tag => {
-//   console.log(tag);
-//   console.log("----");
-//   console.log(markdownParser(content, tag));
-//   console.log("---------------------");
-// });
+writeFileSync(outputFile, filteredMarkdown, { encoding: 'utf-8' });
