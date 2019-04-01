@@ -6,7 +6,7 @@ import mkdirp = require("mkdirp");
 
 // コマンドライン引数の制御
 commander
-  .version("1.0.0")
+  .version("0.0.1")
   .usage("<file> [options]")
   .option('<file>', "input file")
   .option('-t, --tag <tag>', "filter tag")
