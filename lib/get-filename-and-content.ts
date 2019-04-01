@@ -1,5 +1,4 @@
 import { statSync, readdirSync, readFileSync } from "fs";
-import getFilenameAndContent from "./get-filename-and-content";
 
 /**
  * fileの一覧と本文を取得
@@ -7,7 +6,7 @@ import getFilenameAndContent from "./get-filename-and-content";
  * @param {string} path
  * @returns {{ title: string, content: string }[]}
  */
-export default function (path: string): { title: string, content: string }[] {
+export default function getFilenameAndContent(path: string): { title: string, content: string }[] {
   const stat = statSync(path);
 
   if (stat.isFile() && path.substr(-3) === ".md") {

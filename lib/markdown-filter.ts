@@ -6,7 +6,7 @@
  * @param {string} selectHeader
  * @returns
  */
-export default function(markDown: string, selectHeader: string) {
+export default function markdownFilter(markDown: string, selectHeader: string) {
   let filteredMarkdown = "";
   let isExtractionTarget = false;
   let currentTagDepth = 1;
