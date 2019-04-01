@@ -10,7 +10,7 @@ var get_filename_and_content_1 = require("../lib/get-filename-and-content");
 var markdown_hash_filter_1 = require("../lib/markdown-hash-filter");
 // コマンドライン引数の制御
 commander_1.default
-    .version("0.0.1")
+    .version("0.0.2")
     .usage("<file> [options]")
     .option('<file>', "input file")
     .option('-t, --tag <tag>', "filter tag")
