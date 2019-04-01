@@ -56,4 +56,4 @@ function headerTagDepth(tags) {
     }
     return -1;
 }
-//# sourceMappingURL=markdownFilter.js.map
+//# sourceMappingURL=markdown-filter.js.map
