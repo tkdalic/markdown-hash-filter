@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "md-filter": "build/bin/md-filter.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tukumo/markdown-hash-filter.git"
@@ -28,7 +31,9 @@
   ],
   "homepage": "https://github.com/tukumo/markdown-hash-filter#readme",
   "dependencies": {
-    "commander": "^2.19.0"
+    "@types/mkdirp": "^0.5.2",
+    "commander": "^2.19.0",
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
     "@types/node": "^11.12.2"

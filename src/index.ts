@@ -28,7 +28,7 @@ const filteredMarkdown = files.map((file): { title: string, content: string } =>
   .join('\n');
 
 // ファイルのパスとフォルダの作成
-let outputDir: string = commander.outputDir ? commander.outputDir : '';
+let outputDir: string = commander.outputDir ? commander.outputDir : '.';
 if (outputDir.substr(-1) === '/') {
   outputDir = outputDir.substr(-1);
 }
