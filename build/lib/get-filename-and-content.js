@@ -9,6 +9,7 @@ var fs_1 = require("fs");
  */
 function getFilenameAndContent(path) {
     var stat = fs_1.statSync(path);
+    path = path.substr(-1) === '/' ? path.substr(0, -1) : path;
     if (stat.isFile() && path.substr(-3) === ".md") {
         return [{
                 title: path,

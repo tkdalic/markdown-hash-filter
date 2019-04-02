@@ -8,6 +8,7 @@ import { statSync, readdirSync, readFileSync } from "fs";
  */
 export function getFilenameAndContent(path: string): { title: string, content: string }[] {
   const stat = statSync(path);
+  path = path.substr(-1) === '/' ? path.substr(0, -1): path;
 
   if (stat.isFile() && path.substr(-3) === ".md") {
     return [{
