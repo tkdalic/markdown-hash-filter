@@ -6,7 +6,7 @@ import { markdownHashFilter } from "../lib/markdown-hash-filter";
 
 // コマンドライン引数の制御
 commander
-  .version("0.0.5")
+  .version("0.1.0")
   .usage("<file> [options]")
   .option('<file>', "input file")
   .option('-t, --tag <tag>', "filter tag")
