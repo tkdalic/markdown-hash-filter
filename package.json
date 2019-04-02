@@ -1,6 +1,6 @@
 {
   "name": "markdown-hash-filter",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Filter markdown by header.",
   "main": "build/lib/markdown-hash-filter.js",
   "typings": "build/lib/markdown-hash-filter.d.ts",
