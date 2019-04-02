@@ -22,7 +22,7 @@ function markdownHashFilter(markDown, selectHeader) {
         // 抽出する条件
         if (!isExtractionTarget) {
             // 対象のブロックか判定
-            if (tagDepth === -1 || line.indexOf(selectHeader) === -1) {
+            if (tagDepth <= 0 || line.indexOf(selectHeader) === -1) {
                 return;
             }
             // 抽出条件の設定
