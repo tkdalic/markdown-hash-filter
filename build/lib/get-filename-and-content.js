@@ -9,7 +9,6 @@ var fs_1 = require("fs");
  */
 function getFilenameAndContent(path) {
     var stat = fs_1.statSync(path);
-    path = path.substr(-1) === '/' ? path.substr(0, -1) : path;
     if (stat.isFile() && path.substr(-3) === ".md") {
         return [{
                 title: path,
@@ -18,6 +17,7 @@ function getFilenameAndContent(path) {
     }
     if (stat.isDirectory()) {
         var fileNames_1 = [];
+        path = path.substr(-1) === '/' ? path.slice(0, -1) : path;
         fs_1.readdirSync(path).forEach(function (childPath) {
             return fileNames_1.push.apply(fileNames_1, getFilenameAndContent(path + "/" + childPath));
         });
