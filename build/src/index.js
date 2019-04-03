@@ -8,7 +8,7 @@ var fs_1 = require("fs");
 var markdown_hash_filter_1 = require("../lib/markdown-hash-filter");
 // コマンドライン引数の制御;
 commander_1.default
-    .version("0.1.0")
+    .version("0.2.0")
     .arguments("<tag>")
     .usage("<tag>")
     .description("<tag> header tag ")
