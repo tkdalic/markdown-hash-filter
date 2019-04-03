@@ -1,6 +1,8 @@
 # markdown-hash-filter
+
 ## 概要
-markdownをヘッダ情報を元にフィルタリングする。
+
+markdown をヘッダ情報を元にフィルタリングする。
 
 ## インストール
 
@@ -9,11 +11,13 @@ npm install -g markdown-hash-filter
 ```
 
 ## 使い方
-markdownのヘッダを指定した条件で切り出す｡
+
+markdown のヘッダを指定した条件で切り出す｡
 
 例
 
-1. test.md の作成
+input (test.md)
+
 ```
 # テスト
 
@@ -22,12 +26,14 @@ markdownのヘッダを指定した条件で切り出す｡
 テストです｡
 ```
 
-2. コマンド
+コマンド
+
 ```
-md-filter test.md -t 小テスト
+cat test.md | md-filter 小テスト
 ```
 
-3. 小テスト.md が生成される
+output
+
 ```
 test.md
 ## 小テスト
@@ -38,6 +44,7 @@ test.md
 ## ヘルプ･QA
 
 ヘルプは､
+
 ```
 md-filter -h
 ```

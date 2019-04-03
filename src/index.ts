@@ -1,39 +1,17 @@
 import commander from "commander";
-import { writeFileSync } from "fs";
-import mkdirp = require("mkdirp");
-import { getFilenameAndContent } from "../lib/get-filename-and-content";
+import { readFileSync } from "fs";
 import { markdownHashFilter } from "../lib/markdown-hash-filter";
 
-// コマンドライン引数の制御
+// コマンドライン引数の制御;
 commander
   .version("0.1.0")
-  .usage("<file> [options]")
-  .option('<file>', "input file")
-  .option('-t, --tag <tag>', "filter tag")
-  .option("-o, --output-file <outputFile>", "output file")
-  .option("-d, --output-dir <outputDir>", "output directory")
+  .arguments("<tag>")
+  .usage("<tag>")
+  .description("<tag> header tag ")
   .parse(process.argv);
 
-// 対象ファイルの取得
-const files = getFilenameAndContent(commander.args[0]);
+const tag = commander.args[0];
+const content = readFileSync("/dev/stdin", "utf-8");
 
-// 抽出したマークダウンを取得
-const filteredMarkdown = files.map((file): { title: string, content: string } =>
-  ({
-    title: file.title,
-    content: markdownHashFilter(file.content, commander.tag)
-  }))
-  .filter(file => file.content !== '')
-  .map(file => `${file.title}\n${file.content}`)
-  .join('\n');
-
-// ファイルのパスとフォルダの作成
-let outputDir: string = commander.outputDir ? commander.outputDir : '.';
-if (outputDir.substr(-1) === '/') {
-  outputDir = outputDir.substr(-1);
-}
-
-const outputFile = commander.outputFile ? commander.outputFile : `${outputDir}/${commander.tag}.md`;
-mkdirp.sync(outputFile.split('/').slice(0, -1).join('/'));
-
-writeFileSync(outputFile, filteredMarkdown, { encoding: 'utf-8' });
+// tslint:disable-next-line: no-console
+console.log(markdownHashFilter(content, tag));

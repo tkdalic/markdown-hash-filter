@@ -32,9 +32,7 @@
   ],
   "homepage": "https://github.com/tukumo/markdown-hash-filter#readme",
   "dependencies": {
-    "@types/mkdirp": "^0.5.2",
-    "commander": "^2.19.0",
-    "mkdirp": "^0.5.1"
+    "commander": "^2.19.0"
   },
   "devDependencies": {
     "@types/node": "^11.12.2"
