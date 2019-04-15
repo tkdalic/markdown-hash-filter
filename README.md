@@ -35,10 +35,10 @@ cat test.md | md-filter 小テスト
 output
 
 ```
-test.md
 ## 小テスト
 テストです｡
 テストです｡
+
 ```
 
 ## ヘルプ･QA
