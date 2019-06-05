@@ -85,3 +85,5 @@ typings/
 
 # vs code directory
 .vscode
+
+build/
